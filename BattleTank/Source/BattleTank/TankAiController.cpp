@@ -27,6 +27,15 @@ void ATankAiController::BeginPlay()
 	}
 }
 
+void ATankAiController::Tick(float DeltaTime)
+{
+	if (GetPlayerTank())
+	{
+		FVector HitLocation = GetPlayerTank()->GetActorLocation();
+		GetControlledTank()->AimAt(HitLocation);
+	}
+}
+
 ATank* ATankAiController::GetControlledTank() const
 {
 	return Cast<ATank>(GetPawn());
