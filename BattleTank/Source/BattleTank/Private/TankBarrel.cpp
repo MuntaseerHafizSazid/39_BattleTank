@@ -10,6 +10,4 @@ void UTankBarrel::Elevate(float RelativeSpeed)
 	auto RawNewElavation = GetRelativeRotation().Pitch + ElevationChange;
 	RawNewElavation = FMath::Clamp<float>(RawNewElavation, MinElevationDegrees, MaxElevationDegrees);
 	SetRelativeRotation(FRotator(RawNewElavation, 0, 0));
-	auto Time = GetWorld()->GetTimeSeconds();
-	UE_LOG(LogTemp, Warning, TEXT("%f: Elavating at a speed %f"), Time, RawNewElavation);
 }
