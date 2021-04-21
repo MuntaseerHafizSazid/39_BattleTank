@@ -15,7 +15,6 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
-	TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>(FName("Movement Component"));
 }
 
 // Called when the game starts or when spawned
@@ -50,7 +49,7 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet)
 
 void ATank::Fire()
 {
-	bool isReloaded = FPlatformTime::Seconds() - LastFireTime > 3;
+	bool isReloaded = FPlatformTime::Seconds() - LastFireTime > ReloadTimeInSeconds;
 	if(Barrel && isReloaded)
 	{
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBluprint,
