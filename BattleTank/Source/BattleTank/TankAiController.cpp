@@ -13,7 +13,7 @@ void ATankAiController::Tick(float DeltaTime)
 {
 	auto PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
 	auto ControlledTank = GetPawn();
-	if (PlayerTank)
+	if (ensure(PlayerTank))
 	{
 		//Move Towards Player
 		MoveToActor(PlayerTank, AcceptanceRadius);
