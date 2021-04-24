@@ -7,7 +7,7 @@
 #include "AIController.h"
 #include "TankAiController.generated.h"
 
-class ATank;
+class UTankAimingComponent;
 /**
  * 
  */
@@ -19,6 +19,8 @@ class BATTLETANK_API ATankAiController : public AAIController
 	public:
 		virtual void BeginPlay() override;
 		virtual void Tick(float DeltaTime) override;
+
+		UTankAimingComponent* AimingComponent = nullptr;
 	private:
 		//How close can the AI tank get
 		float AcceptanceRadius = 3000;
