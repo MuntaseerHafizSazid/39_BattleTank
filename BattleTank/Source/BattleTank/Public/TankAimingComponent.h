@@ -11,7 +11,8 @@ enum class EFiringStatus : uint8
 {
 	Reloading,
 	Aiming,
-	Locked
+	Locked,
+	OutOfAmmo
 
 };
 
@@ -56,14 +57,19 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<AProjectile> ProjectileBluprint;
 
-	UFUNCTION(BlueprintCallable, Category = "Control")
+	UFUNCTION(BlueprintCallable, Category = "Firing")
 		void Fire();
 
 	void AimAt(FVector HitLocation);
 	bool IsBarrelMoving();
+	EFiringStatus GetFiringStatus() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Firing")
+		int32 GetRoundsLeft() const;
 
 private:
 	void MoveBarrelTowards(FVector AimDirection);
 
+	int32 RoundsLeft = 10;
 		
 };
