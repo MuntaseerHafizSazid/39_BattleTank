@@ -70,6 +70,7 @@ public:
 private:
 	void MoveBarrelTowards(FVector AimDirection);
 
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	int32 RoundsLeft = 10;
 		
 };
