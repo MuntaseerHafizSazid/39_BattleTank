@@ -23,6 +23,8 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 
 		UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 			void FoundAimingComponent(UTankAimingComponent* AimingComponentReference);
+
+		virtual void SetPawn(APawn* InPawn) override;
 	private:
 		UPROPERTY(EditAnywhere)
 			float CrossHairXLocation = 0.5;
@@ -35,5 +37,8 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 		bool GetSightRayHitLocation(FVector& HitLocation) const;
 		bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 		bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
+
+		UFUNCTION()
+			void OnPossessedTankDeath();
 	
 };

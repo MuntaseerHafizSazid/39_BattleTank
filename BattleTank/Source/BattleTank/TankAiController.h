@@ -25,4 +25,9 @@ class BATTLETANK_API ATankAiController : public AAIController
 		//How close can the AI tank get
 		float AcceptanceRadius = 7000;
 
+		virtual void SetPawn(APawn* InPawn) override;
+
+		UFUNCTION()
+			void OnPossessedTankDeath();
+
 };
